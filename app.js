@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const MongoStore = require("connect-mongo");
+const MongoStore = require("connect-mongo").default;
 const Menu = require("./models/menu.js");
 const dineInOrder = require("./models/dineInOrder.js");
 const deliveryOrder = require("./models/deliveryOrder.js");
@@ -31,7 +31,7 @@ async function main() {
     await mongoose.connect(dbUrl);
 };
 
-const store = new MongoStore({
+const store = MongoStore.create({
     mongoUrl : dbUrl,
     crypto: {
     secret: process.env.SECRET,
