@@ -1,0 +1,51 @@
+<% layout("/layouts/boilerplate") %>
+
+<h1>Delivery Orders</h1>
+
+<% for (let order of deliveryOrders) { %>
+
+  <a href="/deliveryOrderCheck/<%= encodeURIComponent(order._id) %>" class="order-link">
+
+    <div class="order-card" data-id="<%= order._id %>">
+
+      <div class="order-info">
+
+        <div class="order-tb-no">
+          Delivery Number : <%= order.deliveryNumber %>
+        </div>
+
+        <br>
+
+        <div class="created-time">
+          Time : <%= order.formattedDate || "Not available" %>
+        </div>
+
+        <br>
+
+        <!-- Optional: if you also have instructions -->
+        <div class="order-text-chef">
+          Instructions : <%= order.orderText || "None" %>
+        </div>
+
+      </div>
+
+    </div>
+
+  </a>
+
+  <hr>
+
+<% } %>
+
+<script>
+  if (window.location.pathname === "/dineInOrders" || window.location.pathname === "/deliveryOrders") {
+    setInterval(function() {
+      location.reload();
+    }, 10000);
+  }
+
+  // Optional: auto-scroll to latest (bottom)
+  window.onload = function () {
+    window.scrollTo(0, document.body.scrollHeight);
+  };
+</script>

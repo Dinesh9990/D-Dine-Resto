@@ -1,0 +1,70 @@
+<% layout("/layouts/boilerplate") %>
+
+
+<div class="checkout-background">
+    <div class="order-page">
+        <div class="order-page-content">
+    <h4>Order Items</h4>
+    <hr>
+<br>
+    <% for(let item of sendOrderItems.orderItems) { %>    
+  <div class="order-item-card" data-id="<%= item.id %>">
+    <div class="order-item-flex">
+      <div class="order-item-name"><%= item.Name %></div>
+      <div class="order-item-qty">Quantity: <%= item.Quantity %></div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="item-cost">&#8377; <%= item.Price %></div>
+    </div>
+  </div>
+<% } %>
+
+
+      <br>
+
+      <div style="font-weight: 700;">
+        Table Number : <%= sendOrderItems.tableNumber %>
+      </div>
+
+    <br>
+      <h6>Bill Details</h6>
+
+      <div class="item-total-and-price Bill" style="font-weight: 700;">
+        <div class="item-total">Item Total</div>
+        <div class="item-total-price" id="grand-total">&#8377; <%= sendOrderItems.itemTotal %></div>
+      </div>
+
+      <div class="item-total-and-price Bill" style="font-weight: 700;">
+        <div class="item-total">Gst</div>
+        <div class="item-total-price" id="grand-total">&#8377; <%= sendOrderItems.gstAmount %></div>
+      </div>
+     
+
+      <hr>
+
+      <div class="grand-total Bill">
+        <h6 class="grand-total-text">TO PAY</h6>
+        <h6 class="grand-total-price" id="final-amount">&#8377; <%= sendOrderItems.finalAmount %></h6>
+      </div>
+
+
+      <hr>
+
+
+      <br>
+
+
+
+      <a href="/dineIn">
+        <div class="order-btn-div">
+            <button class="btn order-btn">
+              <span class="fire-emoji">🔥</span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="order-btn-span" style="font-weight: 600;">Done</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="fas fa-utensils utensils-icon" style="color: aliceblue;"></i>
+            </button>
+          </div>
+      </a>
+    
+    </div>
+    </div>
+</div>
+

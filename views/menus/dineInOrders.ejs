@@ -1,0 +1,45 @@
+<% layout("/layouts/boilerplate") %>
+
+<h1>DineIn Orders</h1>
+
+<% for (let order of dineInOrders) { %>
+
+  <a href="/dineInOrderCheck/<%= encodeURIComponent(order._id) %>" class="order-link">
+
+    <div class="order-card" data-id="<%= order._id %>">
+      
+      <div class="order-info">
+
+        <div class="order-tb-no">
+          Table Number : <%= order.tableNumber %>
+        </div>
+
+        <br>
+
+        <div class="created-time">
+          Time : <%= order.formattedDate || "Not available" %>
+        </div>
+
+        <br>
+
+        <div class="order-text-chef">
+          Instructions : <%= order.orderText || "None" %>
+        </div>
+
+      </div>
+
+    </div>
+
+  </a>
+
+  <hr>
+
+<% } %>
+
+<script>
+  if (window.location.pathname === "/dineInOrders" || window.location.pathname === "/deliveryOrders") {
+    setInterval(function () {
+      location.reload();
+    }, 10000);
+  }
+</script>
