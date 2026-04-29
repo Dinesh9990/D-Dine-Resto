@@ -28,7 +28,9 @@ main()
 })
  
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(dbUrl, {
+  dbName: "ddineDB",
+});
 };
 
 const store = MongoStore.create({
